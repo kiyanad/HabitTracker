@@ -8,6 +8,13 @@ class ActivitiesController < ApplicationController
 
   end
 
+  def new
+
+    @birthday = current_user.birthdate.split("-")
+    @new_birthday = "2019" + ("-") + @birthday.second + ("-") +  @birthday.third
+    
+  end
+
   def show
 
     @activity = Activity.find(params[:id])

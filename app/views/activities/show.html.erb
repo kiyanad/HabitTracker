@@ -26,7 +26,7 @@
   <div id="topbar">
     <div id="topnav">
       <ul>
-        <li class="active"><a href="/users/<%= current_user.id %>">Home</a></li>
+        <li class="active"><a href="/users">Profile</a></li>
 
 
         <li><a href="#">Habits</a>
@@ -34,20 +34,14 @@
             <li><a href="/activities">All</a></li>
             <li><a href="active">Active</a></li>
             <li><a href="completed">Completed</a></li>
+            <li><a href="/activities/new">Birthday Countdown</a></li>
+
           </ul>
         </li>
         <li > <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
       </ul>
     </div>
-    <div id="search">
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Site Search</legend>
-          <input type="text" value="Search Our Website&hellip;"  onfocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;" />
-          <input type="submit" name="go" id="go" value="Search" />
-        </fieldset>
-      </form>
-    </div>
+
     <br class="clear" />
   </div>
 </div>
@@ -97,7 +91,6 @@
       <h2>About This Habit!</h2>
       <img src="<%=@activity.image_url%>" style="height:300px">
       <p> <%= @activity.description %></p>
-      <p class="learnmore"><a href="#">Continue learning...</a></p>
     </div>
     <br class="clear" />
   </div>

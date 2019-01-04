@@ -2,7 +2,9 @@
 
 <nav>
   <ul>
-    <li><a href="/users">Home</a></li>
+    <li><a href="/users">Profile</a></li>
+    <li>  <a href="/activities/new">Birthday Countdown</a>
+</li>
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">Habits</a>
       <div class="dropdown-content">
@@ -22,13 +24,13 @@
 
   <%= date.day %>
 <br>
-  <% if habit.empty? %>
-  You didnt complete any habits today
-  <%= button_to "Forgot a Habit to add?", "/habit" %>
+  <% if habit.empty? && date.past? %>
+  You didnt work on any habits today
+
 
     <div>
       <% elsif habit.count == 1 %>
-      You completed <%= habit.count %> habit today!
+      You worked on <%= habit.count %> habit today!
       <% habit.each do |one_habit| %>
 
   <div>
@@ -37,8 +39,8 @@
   </ul>
   </div>
   <% end %>
-      <% else %>
-      You completed <%= habit.count %> habits today!
+      <% elsif habit.count > 1 %>
+      You worked on <%= habit.count %> habits today!
         <% habit.each do |one_habit| %>
 
     <div>

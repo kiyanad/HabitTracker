@@ -14,18 +14,19 @@
 <div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="/users" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+  <a href="/users" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Profile</a>
   <a href="/users/<%= current_user.id %>" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Calender</a>
+  <a href="/activities/new" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Birthday Countdown</a>
     <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button" title="Notifications">Habits <i class="fa fa-caret-down"></i></button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
       <a href="/activities" class="w3-bar-item w3-button">All</a>
-      <a href="#" class="w3-bar-item w3-button">Categories</a>
+      <a href="#" class="w3-bar-item w3-button">Complete</a>
       <a href="/activities/active" class="w3-bar-item w3-button">Active</a>
     </div>
-    <li class="w3-bar-item w3-button"> <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
 
   </div>
+  <li class="w3-bar-item w3-button"> <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
  </div>
 
 </div>
@@ -42,8 +43,11 @@
 <!-- Team Container -->
 <div class="w3-container w3-padding-64 w3-center" id="team">
 <h2>Completed Habits</h2>
+<% if @completed_activities.empty? %>
+<p>You havent succesfully learned any habits yet!</p>
+<% else %>
 <p>Here are all the Habits you have successfully learned:</p>
-
+<% end %>
 <div class="w3-row"><br>
 
   <% @completed_activities.each do |activity| %>

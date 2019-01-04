@@ -23,3 +23,5 @@ Rails.application.config.assets.precompile += %w( activities_show.css )
 Rails.application.config.assets.precompile += %w( users_profile.css )
 
 Rails.application.config.assets.precompile += %w( all_habits.css )
+
+Rails.application.config.assets.precompile += %w( activities.css )

@@ -4,45 +4,6 @@
 <!DOCTYPE html>
 <html class='no-js' >
 
-	<!-- <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1"> -->
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-
-		<!-- <title>Symp - Responsive One Page VCard/Resume HTML Template</title> -->
-
-		<!--[if lt IE 9]>
-		  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-
-		<!-- <link rel='stylesheet' type='text/css' href='bootstrap/css/bootstrap.min.css' >
-		<link rel='stylesheet' type='text/css' href='css/ionicons.min.css' >
-
-		<link rel='stylesheet' type='text/css' href='css/owl.carousel.css' >
-		<link rel='stylesheet' type='text/css' href='css/owl.theme.css' >
-		<link rel='stylesheet' type='text/css' href='css/owl.transitions.css' >
-		<link rel='stylesheet' type='text/css' href='css/magnific-popup.css' >
-		<link rel='stylesheet' type='text/css' href='css/style.css' >
-		<link rel='stylesheet' type='text/css' href='css/color-default.css' >
-
-
-	</head>
-
-	<body> -->
-
-		<!--=============================================================================
-			Preloader
-		===============================================================================-->
-		<!-- <div id='preloader' >
-			<div class='loader' >
-				<img src='img/load.gif' alt='symp' >
-			</div>
-		</div> -->
-
-
-
 		<!--=============================================================================
 			Main Wrapper
 		===============================================================================-->
@@ -131,8 +92,11 @@
 								<a href='/activities' data-section='portfolio' >Browse/Add Habit</a>
 							</li>
 
+							<li>  <a href="/activities/new" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Birthday Countdown</a>
+							</li>				
+
 							<li>
-							<a><%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %></a> 
+							<a><%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %></a>
 
 							</li>
 

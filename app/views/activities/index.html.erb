@@ -16,6 +16,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   <a href="/users/<%= current_user.id %>" onclick="w3_close()"
   class="w3-bar-item w3-button">Go back</a>
   <a href="/users" onclick="w3_close()" class="w3-bar-item w3-button">Profile</a>
+  <a href="/activities/new" onclick="w3_close()"
+  class="w3-bar-item w3-button">Birthday Countdown</a>
+
   <li class="w3-bar-item w3-button"> <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
 
 </nav>
@@ -25,7 +28,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
     <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
     <div class="w3-right w3-padding-16">Habit Tracker</div>
-    <div class="w3-center w3-padding-16">All Habits</div>
+    <div class="w3-center w3-padding-16">All Habits
+      <p style= "font-size:15px">Select the Habit photo to view page </p>
+    </div>
+
   </div>
 </div>
 
@@ -33,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
   <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+  <div class="w3-padding-16 w3-center" id="food">
     <% @ac.each do |activity| %>
     <div class="w3-quarter">
       <a href = "/activities/<%= activity.id %>"><img src=" <%= activity.image_url %>" alt="Sandwich" style="width:200px"></a>
@@ -42,27 +48,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
     </div>
     <% end %>
   </div>
-    <!-- <div class="w3-quarter">
-      <img src="/w3images/steak.jpg" alt="Steak" style="width:100%">
-      <h3>Let Me Tell You About This Steak</h3>
-      <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="/w3images/cherries.jpg" alt="Cherries" style="width:100%">
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="/w3images/wine.jpg" alt="Pasta and Wine" style="width:100%">
-      <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-  </div> -->
 
 
   <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
+  <div class="w3-row-padding w3-center w3-padding-32">
     <div class="w3-bar">
       <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
       <a href="#" class="w3-bar-item w3-black w3-button">1</a>
@@ -82,7 +71,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
     <div class="w3-padding-32">
       <h4><b>Truth is it actually takes 66 days to form a habit!</b></h4>
       <h6><i>Habit Tracker is here to help with that!</i></h6>
-      <p>Main idea of habit tracker</p>
+      <p>The main idea of habit tracker is to help you build healthy habits!</p>
+
     </div>
   </div>
   <hr>
@@ -91,7 +81,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   <footer class="w3-row-padding w3-padding-32">
     <div class="w3-half">
       <h3>FOOTER</h3>
-      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <p>Habit Tracker was created by Kiyana Dunlock during her time at The Flatiron School.</p>
       <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </div>
 
