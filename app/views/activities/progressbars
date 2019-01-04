@@ -1,0 +1,82 @@
+<section class="progress-bars1 cid-rdEdttrI5H" id="progress-bars1-3">
+
+
+
+
+
+    <div class="container">
+        <h2 class="mbr-section-title pb-2 align-center mbr-fonts-style display-2">
+            Horizontal progress bars
+        </h2>
+
+        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">
+            Click blue "Gear" icon in the top right corner to hide/show progress bars and change them color and value. Click text to edit or style it.
+        </h3>
+
+        <div class="progress_elements">
+            <div class="progress1 pb-5">
+                <div class="title-wrap">
+                    <div class="progressbar-title mbr-fonts-style display-7">
+                        <p>
+                            Amenity
+                        </p>
+                    </div>
+                    <div class="progress_value mbr-fonts-style display-7">
+                        <div class="progressbar-number"></div>
+                        <span>%</span>
+                    </div>
+                </div>
+                <progress class="progress progress-primary" max="100" value="70">
+                </progress>
+            </div>
+
+            <div class="progress2 pb-5">
+                <div class="title-wrap">
+                    <div class="progressbar-title mbr-fonts-style display-7">
+                        <p>
+                           Publick transport
+                        </p>
+                    </div>
+                <div class="progress_value mbr-fonts-style display-7">
+                    <div class="progressbar-number"></div>
+                    <span>%</span>
+                </div>
+                </div>
+                <progress class="progress progress-primary" max="100" value="80">
+                </progress>
+            </div>
+
+            <div class="progress3 pb-5">
+                <div class="title-wrap">
+                    <div class="progressbar-title mbr-fonts-style display-7">
+                        <p>
+                            Nightlife
+                        </p>
+                    </div>
+                    <div class="progress_value mbr-fonts-style display-7">
+                        <div class="progressbar-number"></div>
+                        <span>%</span>
+                    </div>
+                </div>
+                <progress class="progress progress-primary" max="100" value="90">
+                </progress>
+            </div>
+
+            <div class="progress4">
+                <div class="title-wrap">
+                    <div class="progressbar-title mbr-fonts-style display-7">
+                        <p>
+                            Safety
+                        </p>
+                    </div>
+                <div class="progress_value mbr-fonts-style display-7">
+                    <div class="progressbar-number"></div>
+                    <span>%</span>
+                </div>
+                </div>
+                <progress class="progress progress-primary" max="100" value="100">
+                </progress>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,83 @@
+<!-- Saves my dashboard layout -->
+<script type='text/javascript'> $(function() {     Dashing.gridsterLayout('[{"col":4,"row":1,"size_x":1,"size_y":1},{"col":1,"row":1,"size_x":3,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1}]') }); </script>
+
+<!-- Makes my widgets clickable links -->
+<script type='text/javascript'>
+$(function() {
+  $('li').live('click', function(e){
+    var widget = $(this).find('.widget');
+    var url = widget.data('url');
+    window.location = url;
+  });
+});
+</script>
+
+<!-- My header -->
+<!-- <div class="header">
+  <h1><font size="+50"><font color= #FF4F00>Habit Tracker</font></font> </h1>
+  <button onclick="location.href='http://localhost:3000/users'" type="button" button class="button button2">
+     View Profile</button>
+     <button onclick="location.href='http://www.example.com'" type="button" button class="button button1">
+     Edit Profile</button>
+  <button onclick="location.href='http://www.example.com'" type="button" button class="button button3">
+  Logout</button>
+</div> -->
+
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">About</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Habits</a>
+      <div class="dropdown-content">
+        <a href="#">All</a>
+        <a href="#">Categories</a>
+        <a href="#">Your Habits</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
+<% @user = User.first %>
+
+<% content_for :title do %>
+  <%= @user.firstname %>'s Habit Journal
+<% end %>
+
+ <% @userbirthday = @user.birthdate + ", 2019"  %>
+
+<!-- Widgets -->
+
+<div class="gridster">
+  <ul>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+  <div data-view="Countdown" data-title="Birthday Countdown!" data-end= "<%= @userbirthday %>" data-url='/users/<%= @user.id %>'></div>
+</li>
+
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-title="Hello <%= @user.firstname %>" data-text="Welcome Back to your Habit Tracker!!!" data-moreinfo="Lets Get Started! Click here to add new habit!" data-url='/user_activities/new'></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="synergy" data-view="Meter" data-title="Active Habits" data-min="0" data-max="10" data-moreinfo="Click Here to view your active Habits!!!"data-url='/user_activities'></div>
+    </li>
+
+
+<% @activities = UserActivity.all %>
+<% @list_activity = @activities.select do |activity| %>
+<% activity.user == @user  %>
+
+<% end %>
+
+<% @finished_activity = @list_activity.select do |activity| %>
+      <%  activity.status == "t" %>
+      <% end.count %>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="valuation" data-view="Number" data-title="Completed Habits" data-moreinfo="Click Here to view your completed Habits!!!" data-prefix=""data-url='/user_activities/new'></div>
+
+    </li>
+
+  </ul>
+  <center><div style="font-size: 12px">Try this: curl -X PUT 'http://<%= request.host %>:<%= request.port %>/dashing/widgets/welcome' -d "widget[text]=Dashing is awesome"</div></center>
+</div>

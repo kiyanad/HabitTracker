@@ -1,0 +1,107 @@
+<%= stylesheet_link_tag 'activities_show', media: 'all' %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Habit Tracker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="index.html">Habit Tracker</a></h1>
+      <p>Helping you change your habits!</p>
+
+    </div>
+    <div class="fl_right"><a href="#"><img src="https://bonniewisener.com/wp-content/uploads/2016/01/habits-logo-02.png"  style="height:100%; width:75%" alt="" /></a></div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="/users/<%= current_user.id %>">Home</a></li>
+
+
+        <li><a href="#">Habits</a>
+          <ul>
+            <li><a href="/activities">All</a></li>
+            <li><a href="active">Active</a></li>
+            <li><a href="completed">Completed</a></li>
+          </ul>
+        </li>
+        <li > <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
+      </ul>
+    </div>
+    <div id="search">
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+          <input type="text" value="Search Our Website&hellip;"  onfocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;" />
+          <input type="submit" name="go" id="go" value="Search" />
+        </fieldset>
+      </form>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+<div class="wrapper col4">
+  <div id="featured_intro">
+    <div class="fl_left">
+      <% if @activity.name.length > 15 || @activity.name.length < 9 %>
+      <h3><%= @activity.name %></h3>
+      <% else %>
+      <h2><%=@activity.name%></h2>
+      <% end %>
+
+      <% if @find_activity && @find_activity.status == true %>
+
+        <h5>You have already completed this habit!</h5>
+
+          <%= button_to "Add Habit Again", "/activities/#{@activity.id}", :action => "edit", :method => :patch, :controller => "user_ativities", params: {'user_activity' => {'user_id' => current_user.id, 'activity_id' => @activity.id}}%>
+
+        <% else if @find_activity %>
+
+        <h5>You are currently working on this habit</h5>
+
+        <%= button_to "Add Habit", "/user_activities/", :action => "create", :controller => "user_activities", :disabled => true, params: {'user_activity' => {'user_id' => current_user.id, 'activity_id' => @activity.id}}%>
+
+        <%= button_to "Finished Habit", "/activities/#{@activity.id}", :action => "edit", :method => :patch, :controller => "user_activities", params: {'user_activity' => {'user_id' => current_user.id, 'activity_id' => @activity.id}}%>
+
+        <%= button_to "Delete Habit", "/user_activities/#{@activity.id}", :method => :delete, :controller => "user_activities", params: {'user_activity' => {'user_id' => current_user.id, 'activity_id' => @activity.id}} %>
+
+
+
+        <% else %>
+
+        <h5>You are not currently working on this habit.</h5>
+
+        <%= button_to "Add Habit", "/user_activities/", :action => "create", :controller => "user_activities", params: {'user_activity' => {'user_id' => current_user.id, 'activity_id' => @activity.id}}%>
+        <% end %>
+
+
+
+
+        <% end %>
+    </div>
+    <div class="fl_right">
+      <h2>About This Habit!</h2>
+      <img src="<%=@activity.image_url%>" style="height:300px">
+      <p> <%= @activity.description %></p>
+      <p class="learnmore"><a href="#">Continue learning...</a></p>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+</body>
+</html>

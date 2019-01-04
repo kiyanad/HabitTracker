@@ -1,0 +1,185 @@
+<%= stylesheet_link_tag 'users_profile', media: 'all' %>
+
+
+<!DOCTYPE html>
+<html class='no-js' >
+
+	<!-- <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+		<!-- <title>Symp - Responsive One Page VCard/Resume HTML Template</title> -->
+
+		<!--[if lt IE 9]>
+		  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- <link rel='stylesheet' type='text/css' href='bootstrap/css/bootstrap.min.css' >
+		<link rel='stylesheet' type='text/css' href='css/ionicons.min.css' >
+
+		<link rel='stylesheet' type='text/css' href='css/owl.carousel.css' >
+		<link rel='stylesheet' type='text/css' href='css/owl.theme.css' >
+		<link rel='stylesheet' type='text/css' href='css/owl.transitions.css' >
+		<link rel='stylesheet' type='text/css' href='css/magnific-popup.css' >
+		<link rel='stylesheet' type='text/css' href='css/style.css' >
+		<link rel='stylesheet' type='text/css' href='css/color-default.css' >
+
+
+	</head>
+
+	<body> -->
+
+		<!--=============================================================================
+			Preloader
+		===============================================================================-->
+		<!-- <div id='preloader' >
+			<div class='loader' >
+				<img src='img/load.gif' alt='symp' >
+			</div>
+		</div> -->
+
+
+
+		<!--=============================================================================
+			Main Wrapper
+		===============================================================================-->
+		<div id='wrapper' >
+      <div class="wrapper col2">
+
+          <br class="clear" />
+        </div>
+      </div>
+			<!--=============================================================================
+				Front Section
+			===============================================================================-->
+			<section class='front-section' >
+
+				<div class='container' >
+
+
+
+          <div class='front-heading text-center' >
+
+            <h2>
+              <%=  current_user.firstname%>  <%=current_user.lastname%>
+            </h2>
+
+
+
+          </div>
+
+					<div class='front-person-img' >
+
+						<!--person's image-->
+            <% if current_user.image_url.empty? %>
+              <img src="https://i.pinimg.com/474x/0e/ca/cf/0ecacf1245c5e8c723414ea1a19407cf--profile-pictures-avatar.jpg" alt="no picture">
+              <% else %>
+						<img src=' <%= current_user.image_url %>' alt='user pic' >
+            <% end %>
+						<!--/person's image-->
+
+					</div>
+
+					<!--person's titles-->
+					<div class='front-person-titles' >
+
+						<!--title1-->
+						<span class='t1' >
+							<%= current_user.description1 %>
+						</span>
+						<!--/title1-->
+
+						<!--title2-->
+						<span class='t2' >
+									<%= current_user.description2 %>
+						</span>
+						<!--/title2-->
+
+						<!--title3-->
+						<span class='t3' >
+										<%= current_user.description3 %>
+						</span>
+						<!--/title3-->
+
+					</div>
+					<!--/person's titles-->
+
+					<nav class='front-person-links' >
+
+						<!--
+							navigation links, data-section attribute points towards the section with id to be opened.
+						-->
+
+						<ul>
+
+							<li>
+								<a href='/users/<%=current_user.id%>' data-section='about' >Calendar</a>
+							</li>
+
+							<li>
+								<a href='/activities/active' data-section='resume' >Active Habits</a>
+							</li>
+
+							<li>
+								<a href='/activities/completed' data-section='services' >Completed Habits</a>
+							</li>
+
+							<li>
+								<a href='/activities' data-section='portfolio' >Browse/Add Habit</a>
+							</li>
+
+							<li>
+							<a><%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %></a> 
+
+							</li>
+
+
+
+						</ul>
+
+					</nav>
+
+
+
+
+
+				</div>
+
+			</section>
+			<!--=============================================================================
+				/Front Section
+			===============================================================================-->
+
+			<!--=============================================================================
+				About Section
+			===============================================================================-->
+
+			<!--=============================================================================
+				/Contact Section
+			===============================================================================-->
+
+
+			<!--close button-->
+			<div class='close-btn' >
+				<span></span>
+				<span></span>
+			</div>
+			<!--/close button-->
+
+
+
+		<!--=============================================================================
+			/Main Wrapper
+		===============================================================================-->
+
+
+
+
+
+
+
+
+</html>

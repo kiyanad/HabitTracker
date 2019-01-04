@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag 'calender', media: 'all' %>
+
+<nav>
+  <ul>
+    <li><a href="/users">Home</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Habits</a>
+      <div class="dropdown-content">
+        <a href="/activities">All</a>
+        <a href="#">Categories</a>
+        <a href="/users/habits">Your Habits</a>
+      </div>
+    </li>
+    <li > <%= link_to "Log out", logout_path, controller: 'sessions', method: "post", action: 'destroy' %> </li>
+
+  </ul>
+</nav>
+<br>
+
+
+<%= month_calendar events: @useractivities do |date, habit| %>
+
+  <%= date.day %>
+<br>
+  <% if habit.empty? %>
+  You didnt complete any habits today
+  <%= button_to "Forgot a Habit to add?", "/habit" %>
+
+    <div>
+      <% elsif habit.count == 1 %>
+      You completed <%= habit.count %> habit today!
+      <% habit.each do |one_habit| %>
+
+  <div>
+    <ul>
+    <li><%= link_to one_habit.activity.name, "/activities/#{one_habit.activity_id}", :class => 'class1'%> </li>
+  </ul>
+  </div>
+  <% end %>
+      <% else %>
+      You completed <%= habit.count %> habits today!
+        <% habit.each do |one_habit| %>
+
+    <div>
+      <ul>
+      <li><%= link_to one_habit.activity.name, "/activities/#{one_habit.activity_id}", :class => 'class1'%> </li>
+    </ul>
+    </div>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
